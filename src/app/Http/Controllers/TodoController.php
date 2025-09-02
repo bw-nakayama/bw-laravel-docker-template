@@ -16,8 +16,8 @@ class TodoController extends Controller
 
     public function index()
     {
-        $this->todo->all();
-        //dd($todos);<=ここまではOK
+        $todos = $this->todo->all();
+        //dd($todos);
         return view('todo.index', ['todos' => $todos]);
     }
 
@@ -40,6 +40,15 @@ class TodoController extends Controller
     public function show($id)
     {
         $todo = $this->todo->find($id);
+        //dd($todo->content);
         return view('todo.show', ['todo' => $todo]);
+    }
+
+    // TODO: ルートパラメータを引数に受け取る
+    public function edit($id)
+    {
+        $todo = $this->todo->find($id);
+        
+        return view('todo.edit', ['todo' => $todo]);
     }
 }
