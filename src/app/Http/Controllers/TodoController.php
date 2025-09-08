@@ -14,12 +14,21 @@ class TodoController extends Controller
         $this->todo = $todo;
     }
 
+    //コレクションの説明
+    //なぜここでコレクションを使っているか
+    //コレクションについてもう少し詳しく。
+    //配列操作に特化したクラス　とか　メソッドチェーンが使えるとは思うけど。
+    //Collectionはクラスを入れられる。 配列はクラスを入れられない
+
     public function index()
     {
         $todos = $this->todo->all();
         //dd($todos);
         return view('todo.index', ['todos' => $todos]);
     }
+
+    //view関数について
+    //view関数は画面に表示したいbladeファイルを第一引数で指定し、第二引数に渡したいデータを連想配列の形で渡すことができます。
 
     public function create()
     {
@@ -36,6 +45,7 @@ class TodoController extends Controller
 
         return redirect()->route('todo.index');
     }
+    //redirect()はredirectorクラスのインスタンスが返ってくる。それのrouteメソッドを呼び出している
 
     public function show($id)
     {
@@ -55,7 +65,7 @@ class TodoController extends Controller
     public function update(TodoRequest $request, $id) // 第1引数: リクエスト情報の取得　第2引数: ルートパラメータの取得
     {
         // TODO: リクエストされた値を取得
-        $inputs = $request->all();
+        $inputs = $request->all();  //返り値＝＞連想配列
         $todo = $this->todo->find($id);
         $todo->fill($inputs)->save();
         

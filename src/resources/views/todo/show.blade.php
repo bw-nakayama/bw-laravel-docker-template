@@ -21,6 +21,9 @@
             <button type="submit" class="btn btn-danger">削除する</button>
           </form>
         </div>
+        <div class="col-auto">
+          <a href="{{ route('todo.index') }}" class="btn btn-info">戻る</a>
+        </div>
       </div>
     </div>
   </div>

@@ -21,6 +21,9 @@
                 <button type="submit" class="btn btn-primary">作成</button>
               </div>
             </div>
+            <div class="col-auto">
+              <a href="{{ route('todo.index') }}" class="btn btn-info">戻る</a>
+            </div>
           </form>
         </div>
       </div>
